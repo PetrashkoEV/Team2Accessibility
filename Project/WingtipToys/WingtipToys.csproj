@@ -231,6 +231,8 @@
     <Content Include="Account\Web.config" />
     <Content Include="Checkout\Web.config" />
     <Content Include="Admin\Web.config" />
+    <Content Include="Catalog\Images\Thumbs\Thumbs.db" />
+    <Content Include="Catalog\Images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="ProductDetails.aspx" />
     <Content Include="ProductList.aspx" />
