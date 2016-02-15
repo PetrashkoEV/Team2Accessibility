@@ -47,3 +47,30 @@ input[type="select"] {
 .non-focusable:focus {
     outline: none;
 }
+a.skipMenu {
+    left:-999px;
+    position:absolute;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    z-index:-999;
+}
+a.skipMenu:focus, a.skipMenu:active {
+color: #fff;
+background-color: #04498C;
+height: auto;
+width: auto;
+padding-left: 10px;
+padding-right: 10px;
+position: absolute;
+margin-top:10px;
+font-size: 15px;
+top: 0;
+left: 0;
+z-index: 9999;
+}
+.shopping-cart-grid caption {
+    height: 0px;
+    overflow: hidden;
+}

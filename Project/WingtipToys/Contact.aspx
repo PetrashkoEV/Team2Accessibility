@@ -1,13 +1,19 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="WingtipToys.Contact" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" tabindex="-1">
     <h2 role="heading" aria-level="1"><%: Title %>.</h2>
     <h3 role="heading" aria-level="2">Your contact page.</h3>
-    <div aria-label="address of our company" role="article">
+    <span id="addressText" class="invisible-block">address of our company</span>
+
+    <div aria-labelledby="addressText" role="article">
         <address>
-            <span class="invisible-block">city </span>One Microsoft Way<br />
-             Redmond<span class="invisible-block"> street </span><span>WA 98052-6399</span><br />
-            <span class="invisible-block">phone-number</span><abbr title="Phone">P:</abbr>
+            <span id="cityName" class="invisible-block">city </span>
+            <span aria-labelledby="cityName">One Microsoft Way</span><br />
+             Redmond
+            <span id="streetName" class="invisible-block"> street </span>
+            <span aria-labelledby="streetName">WA 98052-6399</span><br />
+            <p id="phone-label" class="invisible-block sr-only">Phone number</p>
+            <abbr title="Phone" aria-labelledby="phone-label" aria-hidden="true">P:</abbr>
             425.555.0100
         </address>
     </div>

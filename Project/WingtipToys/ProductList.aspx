@@ -1,5 +1,6 @@
 ﻿	<%@ Page Title="Products" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" 
          CodeBehind="ProductList.aspx.cs" Inherits="WingtipToys.ProductList" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <section>
         <div>
@@ -11,22 +12,22 @@
                 DataKeyNames="ProductID" GroupItemCount="4"
                 ItemType="WingtipToys.Models.Product" SelectMethod="GetProducts">
                 <EmptyDataTemplate>
-                    <table >
+                    <table>
                         <tr>
                             <td>No data was returned.</td>
                         </tr>
                     </table>
                 </EmptyDataTemplate>
                 <EmptyItemTemplate>
-                    <td/>
+                    <td />
                 </EmptyItemTemplate>
                 <GroupTemplate>
-                    <tr id="itemPlaceholderContainer" runat="server">
+                    <tr id="itemPlaceholderContainer" runat="server" role="presentation">
                         <td id="itemPlaceholder" runat="server"></td>
                     </tr>
                 </GroupTemplate>
                 <ItemTemplate>
-                    <td runat="server">
+                    <td runat="server" role="listitem">
                         <table>
                             <tr aria-hidden="true">
                                 <td>
@@ -38,17 +39,17 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="<%#: GetRouteUrl("ProductByNameRoute", new {productName = Item.ProductName}) %>">
+                                    <a href="<%#: GetRouteUrl("ProductByNameRoute", new {productName = Item.ProductName}) %>" aria-describedby="price">
                                       <%#:Item.ProductName%>
                                     </a>
                                     <br />
-                                    <span>
-                                        <b>Price: </b><%#:String.Format("{0:c}", Item.UnitPrice)%>
+                                    <span id="price">
+                                        <strong>Price: </strong><%#:String.Format("{0:c}", Item.UnitPrice)%>
                                     </span>
                                     <br />
                                     <a href="/AddToCart.aspx?productID=<%#:Item.ProductID %>">               
                                         <span class="ProductListItem">
-                                            <b>Add To Cart<b>
+                                            <strong>Add To Cart</strong>
                                         </span>           
                                     </a>
                                 </td>
@@ -61,11 +62,11 @@
                     </td>
                 </ItemTemplate>
                 <LayoutTemplate>
-                    <table style="width:100%;">
+                    <table style="width: 100%;">
                         <tbody>
                             <tr>
                                 <td>
-                                    <table id="groupPlaceholderContainer" runat="server" style="width:100%">
+                                    <table id="groupPlaceholderContainer" runat="server" style="width: 100%" role="list">
                                         <tr id="groupPlaceholder"></tr>
                                     </table>
                                 </td>

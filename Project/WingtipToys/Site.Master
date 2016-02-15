@@ -37,8 +37,9 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
+        <a class="skipMenu" href="#main">Skip to main content</a>
 
-        <div class="navbar navbar-inverse navbar-fixed-top" role="menubar">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -49,9 +50,10 @@
                     <a class="navbar-brand" runat="server" href="~/" aria-label="wingtiptoys.com">Wingtip Toys</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav" role="menu">
-                        <li role="menuitem"><a runat="server" id="adminLink" visible="false"
-                            href="~/Admin/AdminPage">Admin</a></li>
+                    <ul class="nav navbar-nav" role="menu" aria-label="Main navigation">
+                        <li role="menuitem">
+                            <a runat="server" id="adminLink" visible="false" href="~/Admin/AdminPage">Admin</a>
+                        </li>
                         <li role="menuitem"><a runat="server" href="~/">Home</a></li>
                         <li role="menuitem"><a runat="server" href="~/About">About</a></li>
                         <li role="menuitem"><a runat="server" href="~/Contact">Contact</a></li>
@@ -60,7 +62,7 @@
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right" role="menu">
+                            <ul class="nav navbar-nav navbar-right" role="menu" aria-label="Account navigation">
                                 <li role="menuitem"><a runat="server" href="~/Account/Register">Register</a></li>
                                 <li role="menuitem"><a runat="server" href="~/Account/Login">Log in</a></li>
                             </ul>
@@ -86,13 +88,13 @@
         </div>
         <div role="complementary">
             <span id="describeCategoryProducts" class="invisible-block">products' filters</span>
-            <div id="CategoryMenu" style="text-align: center" role="menu" aria-describedby="describeCategoryProducts">
+            <div id="CategoryMenu" style="text-align: center"  aria-describedby="describeCategoryProducts">
                 <asp:ListView ID="categoryList"
                     ItemType="WingtipToys.Models.Category"
                     runat="server"
                     SelectMethod="GetCategories">
                     <ItemTemplate>
-                        <strong style="font-size: large; font-style: normal;" role="menuitem">
+                        <strong style="font-size: large; font-style: normal;" >
                             <a href="<%#: GetRouteUrl("ProductsByCategoryRoute", new {categoryName = Item.CategoryName}) %>">
                                 <%#: Item.CategoryName %>
                             </a>
@@ -102,12 +104,12 @@
                 </asp:ListView>
             </div>
         </div>
-        <div class="container body-content">
-            <div role="main">
+        <div class="container body-content" id="main">
+            <div role="main" tabindex="-1">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-            <hr role="separator" />
+            <hr aria-hidden="true" />
             <footer role="contentinfo">
                 <p>&copy; <%: DateTime.Now.Year %> - Wingtip Toys</p>
             </footer>
