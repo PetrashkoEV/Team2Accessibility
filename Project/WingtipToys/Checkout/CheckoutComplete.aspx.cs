@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using WingtipToys.Models;
 
 namespace WingtipToys.Checkout
@@ -37,7 +33,7 @@ namespace WingtipToys.Checkout
         if (ret)
         {
           // Retrieve PayPal confirmation value.
-          string PaymentConfirmation = decoder["PAYMENTINFO_0_TRANSACTIONID"].ToString();
+          string PaymentConfirmation = decoder["PAYMENTINFO_0_TRANSACTIONID"];
           TransactionId.Text = PaymentConfirmation;
 
 
@@ -60,8 +56,8 @@ namespace WingtipToys.Checkout
           }
 
           // Clear shopping cart.
-          using (WingtipToys.Logic.ShoppingCartActions usersShoppingCart =
-              new WingtipToys.Logic.ShoppingCartActions())
+          using (Logic.ShoppingCartActions usersShoppingCart =
+              new Logic.ShoppingCartActions())
           {
             usersShoppingCart.EmptyCart();
           }
