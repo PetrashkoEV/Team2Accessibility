@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using WingtipToys.Models;
 using System.Web.ModelBinding;
 using System.Web.Routing;
+using System.Web.UI.HtmlControls;
 
 namespace WingtipToys
 {
@@ -36,6 +37,17 @@ namespace WingtipToys
                             categoryName) == 0);
       }
       return query;
+    }
+
+    protected void productList_ItemDataBound(object sender, ListViewItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListViewItemType.DataItem)
+        {
+            var dataitem = (Product)e.Item.DataItem;
+            var v1 = (HtmlGenericControl)e.Item.FindControl("price");
+            var link = (HtmlAnchor)e.Item.FindControl("lnkProductName");
+            link.Attributes["aria-describedby"] = v1.ClientID;
+        }
     }
   }
 }

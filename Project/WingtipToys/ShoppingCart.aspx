@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="WingtipToys.ShoppingCart" %>
+﻿<%@ Page Title="shopping cart" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="WingtipToys.ShoppingCart" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div id="ShoppingCartTitle" runat="server" class="ContentHead">
@@ -15,7 +15,7 @@
             <asp:BoundField DataField="Product.UnitPrice" HeaderText="Price (each)" DataFormatString="{0:c}" FooterText="<span class='invisible-block'>footer</span>" />
             <asp:TemplateField HeaderText="Quantity">
                 <ItemTemplate>
-                    <asp:TextBox ID="PurchaseQuantity" Width="40" runat="server" Text="<%#: Item.Quantity %>"></asp:TextBox>
+                    <asp:TextBox ID="PurchaseQuantity" Width="40" runat="server" aria-label="current quantity" Text="<%#: Item.Quantity %>"></asp:TextBox>
                 </ItemTemplate>
                 <FooterTemplate>
                     <span class="invisible-block">footer</span>
@@ -31,7 +31,8 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Remove Item">
                 <ItemTemplate>
-                    <asp:CheckBox ID="Remove" runat="server"></asp:CheckBox>
+                    <asp:CheckBox ID="Remove" runat="server" aria-labelledby="checkboxHelper"></asp:CheckBox>
+                    <span id="checkboxHelper" class="invisible-block">you may delete current item by checking this checkbox</span>
                 </ItemTemplate>
                 <FooterTemplate>
                     <span class="invisible-block">footer</span>
