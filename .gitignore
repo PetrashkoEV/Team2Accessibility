@@ -3,3 +3,6 @@
 ################################################################################
 
 /Project/packages
+/Project/WingtipToys/bin
+/Project/WingtipToys/obj/
+/Project/WingtipToys/App_Data
